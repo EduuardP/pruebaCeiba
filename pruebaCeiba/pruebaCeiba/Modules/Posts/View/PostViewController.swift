@@ -11,6 +11,9 @@ class PostViewController: UIViewController {
 
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var lblNombre: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
     
     
     let viewModel = PostViewModel()
@@ -19,19 +22,31 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         viewModel.initViewModel()
         registerCells()
+        initView()
+        getPosts()
         
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        getPosts()
-        print(viewModel.posts.count)
+    
+    
+    func initView() {
+        lblNombre.text = viewModel.user.name
+        lblEmail.text = viewModel.user.email
+        lblPhone.text = viewModel.user.phone
     }
     
 
     func getPosts() {
-        viewModel.getPosts()
-        reloadCollection()
+        showLoading()
+        viewModel.getPosts(susses: {
+            self.viewModel.loadData()
+            self.hiddenLoading()
+            self.reloadCollection()
+        }, failed: {
+            self.hiddenLoading()
+        })
+        
     }
     
     
@@ -42,10 +57,7 @@ class PostViewController: UIViewController {
         collectionView.register(nib, forCellWithReuseIdentifier: viewModel.cells.post)
     }
     
-    func borrarPost(index:Int){
-        
-        reloadCollection()
-    }
+    
     
     func reloadCollection() {
         self.collectionView.performBatchUpdates({
