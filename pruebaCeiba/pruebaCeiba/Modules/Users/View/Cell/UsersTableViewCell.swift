@@ -9,15 +9,24 @@ import UIKit
 
 class UsersTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var contenido: UIView!
+    @IBOutlet weak var lblNombre: UILabel!
+    @IBOutlet weak var lblTelefono: UILabel!
+    @IBOutlet weak var lblCorreo: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        initCell()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    func initCell() {
+        contenido.layer.shadowColor = UIColor.black.cgColor
+        contenido.layer.shadowOpacity = 0.3
+        contenido.layer.shadowOffset = .zero
+        contenido.layer.shadowRadius = 5
+        contenido.layer.cornerRadius = 5
     }
 
 }
