@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import UIKit
+import ZVProgressHUD
+
+extension UIViewController{
+    
+    func showLoading(){
+        ZVProgressHUD.maskType = .black
+        ZVProgressHUD.show()
+    }
+    
+    func hiddenLoading(){
+        ZVProgressHUD.dismiss()
+    }
+}
