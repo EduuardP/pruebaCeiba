@@ -7,12 +7,16 @@
 
 import UIKit
 
-class UsersViewController: UIViewController {
+class UsersViewController: UIViewController  {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblEmpty: UILabel!
+    @IBOutlet weak var searhView: UISearchBar!
+    
     let viewModel = UsersViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
         getUsers()
         // Do any additional setup after loading the view.
     }
@@ -21,16 +25,34 @@ class UsersViewController: UIViewController {
     func getUsers() {
         showLoading()
         viewModel.getUsers {
-            self.viewModel.loadData()
             self.tableView.reloadData()
+            self.verificarDatosVacios()
             self.hiddenLoading()
         } failed: {
             self.hiddenLoading()
+            self.verificarDatosVacios()
         }
 
     }
     
+    func initView() {
+        searhView.delegate = self
 
+    }
+    
+    func verificarDatosVacios(){
+        
+        lblEmpty.isHidden = viewModel.containerIsZero()
+        tableView.isHidden = !viewModel.containerIsZero()
+        
+    }
+    
+    func filtrarUsuarios(text:String) {
+        viewModel.filtrarUsuarios(text: text)
+        verificarDatosVacios()
+        tableView.reloadData()
+        
+    }
     @objc func irPost(_ sender:UIButton){
         
         irPosts(user: viewModel.container[sender.tag].obj!)
@@ -63,4 +85,15 @@ extension UsersViewController:UITableViewDelegate,UITableViewDataSource{
         cell.btnVerPublicaciones.addTarget(self, action: #selector(irPost(_:)), for: .touchUpInside)
         return cell
     }
+}
+
+
+extension UsersViewController:UISearchBarDelegate{
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtrarUsuarios(text: searchText)
+    }
+    
+    
 }

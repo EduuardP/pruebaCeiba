@@ -16,6 +16,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Yuk-SK-gSb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="verde"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,7 +35,7 @@
             <objects>
                 <viewController storyboardIdentifier="UsersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PrD-Y5-4MR" customClass="UsersViewController" customModule="pruebaCeiba" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V9T-4k-az8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="122" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dKw-5q-RZf">
@@ -127,16 +128,27 @@
                                     <outlet property="delegate" destination="PrD-Y5-4MR" id="FHk-Ki-g0k"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-LK-z8P">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Buscar usuarios" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-LK-z8P">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PrD-Y5-4MR" id="Jfz-LE-JCp"/>
+                                </connections>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcR-vz-9MA">
+                                <rect key="frame" x="102.5" y="294" width="170.5" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kZt-wQ-th7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="NcR-vz-9MA" firstAttribute="centerX" secondItem="kZt-wQ-th7" secondAttribute="centerX" id="7nw-6u-qnI"/>
                             <constraint firstItem="HTa-LK-z8P" firstAttribute="leading" secondItem="kZt-wQ-th7" secondAttribute="leading" id="Gws-vQ-19Q"/>
                             <constraint firstItem="dKw-5q-RZf" firstAttribute="width" secondItem="V9T-4k-az8" secondAttribute="width" id="RsU-wV-542"/>
+                            <constraint firstItem="NcR-vz-9MA" firstAttribute="centerY" secondItem="kZt-wQ-th7" secondAttribute="centerY" id="VC1-ic-2Tq"/>
                             <constraint firstItem="dKw-5q-RZf" firstAttribute="top" secondItem="HTa-LK-z8P" secondAttribute="bottom" constant="10" id="XTF-YK-OKe"/>
                             <constraint firstItem="HTa-LK-z8P" firstAttribute="centerX" secondItem="kZt-wQ-th7" secondAttribute="centerX" id="fmF-IW-BcE"/>
                             <constraint firstItem="kZt-wQ-th7" firstAttribute="bottom" secondItem="dKw-5q-RZf" secondAttribute="bottom" id="gDv-qR-tFS"/>
@@ -146,6 +158,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Users" id="ILb-YU-TkH"/>
                     <connections>
+                        <outlet property="lblEmpty" destination="NcR-vz-9MA" id="C1B-4D-rfq"/>
+                        <outlet property="searhView" destination="HTa-LK-z8P" id="0nK-fP-tbz"/>
                         <outlet property="tableView" destination="dKw-5q-RZf" id="fw6-K8-q8q"/>
                     </connections>
                 </viewController>

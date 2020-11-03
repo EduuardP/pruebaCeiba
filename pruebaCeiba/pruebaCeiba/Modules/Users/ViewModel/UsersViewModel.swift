@@ -27,6 +27,7 @@ class UsersViewModel {
         
         if(managerCore.getAllUsers().count>0){
             self.users = managerCore.getAllUsers()
+            self.loadData(usuarios: users)
             susses()
         }
         else{
@@ -36,6 +37,7 @@ class UsersViewModel {
                let usersModel =  Mapper<UserModel>().mapArray(JSONObject: (response))!
                 self.managerCore.saveUsers(users: usersModel) {
                 self.users = self.managerCore.getAllUsers()
+                    self.loadData(usuarios: self.users)
                     susses()
                 } failed: { (error) in
                     print(error)
@@ -49,12 +51,30 @@ class UsersViewModel {
     }
     
     
-    func loadData() {
+    func loadData(usuarios:[User]) {
         container.removeAll()
-        users.forEach { (user) in
+        usuarios.forEach { (user) in
             
             container.append((cells.user,user,90))
             
         }
+    }
+    
+    func containerIsZero()->Bool{
+        return container.count>0
+    }
+    
+    func filtrarUsuarios(text:String){
+         
+        if(text.count>0){
+           let  usersTemp =  users.filter { (user) -> Bool in
+            (user.name?.lowercased().contains(text.lowercased()))!
+            }
+            loadData(usuarios: usersTemp)
+        }
+        else{
+            loadData(usuarios: self.users)
+        }
+        
     }
 }

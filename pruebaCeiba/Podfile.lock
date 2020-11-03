@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlignedCollectionViewFlowLayout (1.1.2)
+  - IQKeyboardManagerSwift (6.3.0)
+  - ObjectMapper (4.2.0)
+  - ZVActivityIndicatorView (0.2.3)
+  - ZVProgressHUD (2.0.4):
+    - ZVActivityIndicatorView
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlignedCollectionViewFlowLayout
+  - IQKeyboardManagerSwift (= 6.3.0)
+  - ObjectMapper
+  - ZVProgressHUD (~> 2.0.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlignedCollectionViewFlowLayout
+    - IQKeyboardManagerSwift
+    - ObjectMapper
+    - ZVActivityIndicatorView
+    - ZVProgressHUD
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  ZVActivityIndicatorView: 7e79667deaaeeb8f92bb8b4f6ac746e3d9c95058
+  ZVProgressHUD: 9b0e601218ee2bfc4c7637241d42d7e087f67ba9
+
+PODFILE CHECKSUM: 96f3997651fdf306a43ab46ea88e268add218499
+
+COCOAPODS: 1.9.1
