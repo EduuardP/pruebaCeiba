@@ -1,8 +1,8 @@
 //
 //  PostModel.swift
-//  pruebasNapoleon
+//  pruebaCeiba
 //
-//  Created by IMac on 29/10/20.
+//  Created by IMac on 02/11/20.
 //
 
 import Foundation
@@ -14,8 +14,7 @@ class PostModel: Mappable {
     var userId:Int16 = 0
     var title = ""
     var body = ""
-    var read = true
-    var favorite = false
+    
     
     
     required init?(map: Map){
@@ -27,8 +26,7 @@ class PostModel: Mappable {
         userId <- map["userId"]
         title <- map["title"]
         body <- map["body"]
-        read <- map["read"]
-        favorite <- map["favorite"]
+        
     }
    
     

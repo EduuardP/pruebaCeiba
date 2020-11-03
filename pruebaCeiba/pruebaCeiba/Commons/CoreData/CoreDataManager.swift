@@ -1,8 +1,8 @@
 //
 //  CoreDataManager.swift
-//  pruebasNapoleon
+//  pruebaCeiba
 //
-//  Created by IMac on 29/10/20.
+//  Created by IMac on 02/11/20.
 //
 
 
@@ -57,10 +57,12 @@ class CoreDataManager {
     func saveUsers(users:[UserModel], completion: @escaping() -> (),failed: @escaping(String) -> ()) {
         
 
-        for (index,item) in users.enumerated() {
+        for (item) in users {
             let user = User(context: context)
             user.id = item.id
-            
+            user.name = item.name
+            user.phone = item.phone
+            user.email = item.email
             self.save()
         }
         completion()
@@ -68,7 +70,7 @@ class CoreDataManager {
     }
     
     
-    func getAllPost() -> [Post]  {
+   /* func getAllPost() -> [Post]  {
             
             let fetchRequest : NSFetchRequest<Post> = Post.fetchRequest()
             do {
@@ -78,32 +80,46 @@ class CoreDataManager {
                 print("El error obteniendo los posts \(error)")
              }
         return []
+    } */
+    
+    func getAllUsers() -> [User]  {
+            
+            let fetchRequest : NSFetchRequest<User> = User.fetchRequest()
+            do {
+               let result = try context.fetch(fetchRequest)
+                return result
+            } catch {
+                print("El error obteniendo los posts \(error)")
+             }
+        return []
     }
-    func deleteAllPost() {
+    
+    
+   /* func deleteAllPost() {
         
         let posts = getAllPost()
         posts.forEach { (item) in
             context.delete(item)
         }
         save()
-    }
-    func deletePost(post:Post) {
+    } */
+   /* func deletePost(post:Post) {
         context.delete(post)
         save()
-    }
+    } */
     
     
-    func findPost(post:Post) -> Post? {
+    func findPosts(userId:Int16) -> [Post] {
         
         let fetchRequest : NSFetchRequest<Post> = Post.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id==\(post.id)")
+        fetchRequest.predicate = NSPredicate(format: "userId==\(userId)")
         do {
            let result = try context.fetch(fetchRequest)
-            return result[0]
+            return result
         } catch {
             print("El error obteniendo los posts \(error)")
          }
-        return nil
+        return []
     }
     
     func save() {
@@ -117,18 +133,7 @@ class CoreDataManager {
 
     }
     
-    
-    func filterFavoritePosts() -> [Post]{
-        let fetchRequest : NSFetchRequest<Post> = Post.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "favorite == true")
-        do {
-           let result = try context.fetch(fetchRequest)
-            return result
-        } catch {
-            print("El error obteniendo los posts \(error)")
-         }
-        return []
-    }
+
     
     
  
