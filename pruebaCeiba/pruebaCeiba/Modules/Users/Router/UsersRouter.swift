@@ -20,4 +20,11 @@ extension UsersViewController{
         let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
         return navigationController
     }
+    
+    func irPosts(user:User) {
+        
+        let vc = PostViewController.instantiate()
+        vc.viewModel.user = user
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

@@ -18,27 +18,24 @@ class UsersViewModel {
     let endpoints = EndPoints()
     private let managerCore = CoreDataManager()
     
-    
-    
-    var posts = [Post]()
-    typealias CellModel = (cell:String,obj:Post?,height:Int)
+    typealias CellModel = (cell:String,obj:User?,height:Int)
     var container = [CellModel]()
     
     
     
     func getUsers(susses: @escaping ()->(),failed: @escaping ()->() ) {
         
-        if(managerCore.getAllPost().count>0){
+        if(managerCore.getAllUsers().count>0){
+            self.users = managerCore.getAllUsers()
             susses()
         }
         else{
             services.get(url: endpoints.users) { (res) in
                 
                 let response = res as? [[String:Any]] ?? [[:]]
-               let postsModel =  Mapper<PostModel>().mapArray(JSONObject: (response))!
-                self.managerCore.deleteAllPost()
-                self.managerCore.savePosts(posts: postsModel) {
-                 //   self.posts = self.managerCore.getAllPost()
+               let usersModel =  Mapper<UserModel>().mapArray(JSONObject: (response))!
+                self.managerCore.saveUsers(users: usersModel) {
+                self.users = self.managerCore.getAllUsers()
                     susses()
                 } failed: { (error) in
                     print(error)
@@ -49,7 +46,15 @@ class UsersViewModel {
                 failed()
             }
         }
-        
-
+    }
+    
+    
+    func loadData() {
+        container.removeAll()
+        users.forEach { (user) in
+            
+            container.append((cells.user,user,90))
+            
+        }
     }
 }

@@ -13,6 +13,8 @@ class UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var lblNombre: UILabel!
     @IBOutlet weak var lblTelefono: UILabel!
     @IBOutlet weak var lblCorreo: UILabel!
+    @IBOutlet weak var btnVerPublicaciones: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +29,12 @@ class UsersTableViewCell: UITableViewCell {
         contenido.layer.shadowOffset = .zero
         contenido.layer.shadowRadius = 5
         contenido.layer.cornerRadius = 5
+    }
+    
+    func setup(user:User){
+        lblNombre.text = user.name
+        lblCorreo.text = user.email
+        lblTelefono.text = user.phone
     }
 
 }

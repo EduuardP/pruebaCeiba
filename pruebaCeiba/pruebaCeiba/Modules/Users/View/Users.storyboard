@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="557"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="user" rowHeight="122" id="qX9-Lg-BoQ" customClass="UsersTableViewCell" customModule="pruebaCeiba" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UsersTableViewCell" rowHeight="122" id="qX9-Lg-BoQ" customClass="UsersTableViewCell" customModule="pruebaCeiba" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qX9-Lg-BoQ" id="yPr-mO-J3j">
@@ -51,16 +51,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYx-kp-327">
                                                     <rect key="frame" x="19" y="6" width="337.5" height="110"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="O0Y-Vw-4CN">
-                                                            <rect key="frame" x="3" y="34.5" width="20.5" height="18.5"/>
-                                                            <color key="tintColor" red="0.1563500464" green="0.36764395239999997" blue="0.1802313626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeH-Pb-uPM">
                                                             <rect key="frame" x="3" y="3" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="verde"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="O0Y-Vw-4CN">
+                                                            <rect key="frame" x="3" y="34.5" width="20.5" height="18.5"/>
+                                                            <color key="tintColor" red="0.1563500464" green="0.36764395239999997" blue="0.1802313626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ojm-tP-zdG">
                                                             <rect key="frame" x="3" y="65.5" width="20.5" height="19"/>
                                                             <color key="tintColor" name="verde"/>
@@ -81,20 +81,21 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VER PUBLICACIONES" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-zz-CJ3">
-                                                            <rect key="frame" x="167.5" y="89" width="165" height="21"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKK-Ed-GrB">
+                                                            <rect key="frame" x="167.5" y="77" width="165" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" name="verde"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <state key="normal" title="VER PUBLICACIONES">
+                                                                <color key="titleColor" name="verde"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="VeH-Pb-uPM" firstAttribute="leading" secondItem="zYx-kp-327" secondAttribute="leading" constant="3" id="4lA-HG-eMf"/>
                                                         <constraint firstItem="bAg-10-jmC" firstAttribute="centerY" secondItem="Ojm-tP-zdG" secondAttribute="centerY" id="6CX-I8-QhW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZKK-Ed-GrB" secondAttribute="trailing" constant="5" id="Hje-ey-FIL"/>
                                                         <constraint firstItem="Ojm-tP-zdG" firstAttribute="top" secondItem="O0Y-Vw-4CN" secondAttribute="bottom" constant="10" id="KeE-Vi-DGL"/>
                                                         <constraint firstItem="tDt-yw-aoe" firstAttribute="centerY" secondItem="O0Y-Vw-4CN" secondAttribute="centerY" id="OYX-TZ-wrR"/>
-                                                        <constraint firstAttribute="trailing" secondItem="kbC-zz-CJ3" secondAttribute="trailing" constant="5" id="U7B-Ts-J7a"/>
                                                         <constraint firstItem="Ojm-tP-zdG" firstAttribute="leading" secondItem="zYx-kp-327" secondAttribute="leading" constant="3" id="XI5-pG-J04"/>
                                                         <constraint firstItem="VeH-Pb-uPM" firstAttribute="bottom" secondItem="O0Y-Vw-4CN" secondAttribute="top" constant="-10" id="YXB-5Q-2Uz"/>
                                                         <constraint firstItem="tDt-yw-aoe" firstAttribute="leading" secondItem="O0Y-Vw-4CN" secondAttribute="trailing" constant="7.5" id="lBD-eE-0Pf"/>
@@ -107,12 +108,13 @@
                                             <constraints>
                                                 <constraint firstItem="zYx-kp-327" firstAttribute="centerY" secondItem="yPr-mO-J3j" secondAttribute="centerY" id="8QJ-DR-PxH"/>
                                                 <constraint firstItem="zYx-kp-327" firstAttribute="centerX" secondItem="yPr-mO-J3j" secondAttribute="centerX" id="FJa-68-0Hd"/>
-                                                <constraint firstAttribute="bottom" secondItem="kbC-zz-CJ3" secondAttribute="bottom" constant="6" id="HQh-S4-Jdr"/>
                                                 <constraint firstItem="zYx-kp-327" firstAttribute="width" secondItem="yPr-mO-J3j" secondAttribute="width" multiplier="0.9" id="S1J-JV-jar"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZKK-Ed-GrB" secondAttribute="bottom" constant="6" id="iOF-4N-jcJ"/>
                                                 <constraint firstItem="zYx-kp-327" firstAttribute="height" secondItem="yPr-mO-J3j" secondAttribute="height" multiplier="0.9" id="u71-gY-w1a"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnVerPublicaciones" destination="ZKK-Ed-GrB" id="xcy-gh-2be"/>
                                             <outlet property="contenido" destination="zYx-kp-327" id="OJo-aI-Njh"/>
                                             <outlet property="lblCorreo" destination="bAg-10-jmC" id="UTT-Uh-rtC"/>
                                             <outlet property="lblNombre" destination="VeH-Pb-uPM" id="Rce-DR-rCB"/>
@@ -143,10 +145,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Users" id="ILb-YU-TkH"/>
+                    <connections>
+                        <outlet property="tableView" destination="dKw-5q-RZf" id="fw6-K8-q8q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLn-U9-wbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031" y="123"/>
+            <point key="canvasLocation" x="1029.5999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
     <resources>
